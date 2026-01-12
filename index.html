@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Player</title>
+    </head>
+    <body>
+        <h2>Player</h2>
+
+        <audio id="player" controls></audio>
+
+        <br /><br />
+
+        <button onclick="prev()">⏮</button>
+        <button onclick="play()">▶</button>
+        <button onclick="pause()">⏸</button>
+        <button onclick="next()">⏭</button>
+
+        <!--<script src="player.js"></script>-->
+        <script>
+            const playlist = {{ .Files }};
+
+            let current = 0;
+            const player = document.getElementById("player");
+
+            load(current);
+
+            function load(index) {
+                player.src = playlist[index];
+                player.load();
+                player.play();
+            }
+
+            function play() {
+                player.play();
+            }
+
+            function pause() {
+                player.pause();
+            }
+
+            function next() {
+                if (current < playlist.length - 1) {
+                    current++;
+                    load(current);
+                }
+            }
+
+            function prev() {
+                if (current > 0) {
+                    current--;
+                    load(current);
+                }
+            }
+
+            // toca o próximo automaticamente
+            player.addEventListener("ended", next);
+        </script>
+    </body>
+</html>
