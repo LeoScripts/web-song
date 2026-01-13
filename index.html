@@ -2,26 +2,46 @@
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8" />
-        <title>Player</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+        <title>Web-Song</title>
     </head>
     <body>
-        <h2>Player</h2>
+        <div class="player-container">
+            <h2>🎵Web Song</h2>
 
-        <audio id="player" controls></audio>
+            <div class="track-info">
+                <div class="track-number">
+                    Faixa <span id="current-track">1</span> de
+                    <span id="total-tracks">0</span>
+                </div>
+                <div class="track-name" id="track-name">Carregando...</div>
+            </div>
 
-        <br /><br />
+            <div class="audio-container">
+                <audio id="player" controls></audio>
+            </div>
 
-        <button onclick="prev()">⏮</button>
-        <button onclick="play()">▶</button>
-        <button onclick="pause()">⏸</button>
-        <button onclick="next()">⏭</button>
+            <div class="controls">
+                <button onclick="prev()" title="Anterior">⏮</button>
+                <button onclick="play()" title="Reproduzir">▶</button>
+                <button onclick="pause()" title="Pausar">⏸</button>
+                <button onclick="next()" title="Próxima">⏭</button>
+            </div>
+        </div>
 
-        <!--<script src="player.js"></script>-->
         <script>
             const playlist = {{ .Files }};
-
             let current = 0;
             const player = document.getElementById("player");
+
+            function updateTrackInfo() {
+                document.getElementById("current-track").textContent = current + 1;
+                document.getElementById("total-tracks").textContent = playlist.length;
+
+                const trackName = playlist[current].split('/').pop().replace(/\.[^/.]+$/, "");
+                document.getElementById("track-name").textContent = decodeURIComponent(trackName);
+            }
 
             load(current);
 
@@ -29,30 +49,26 @@
                 player.src = playlist[index];
                 player.load();
                 player.play();
+                updateTrackInfo();
             }
-
             function play() {
                 player.play();
             }
-
             function pause() {
                 player.pause();
             }
-
             function next() {
                 if (current < playlist.length - 1) {
                     current++;
                     load(current);
                 }
             }
-
             function prev() {
                 if (current > 0) {
                     current--;
                     load(current);
                 }
             }
-
             // toca o próximo automaticamente
             player.addEventListener("ended", next);
         </script>

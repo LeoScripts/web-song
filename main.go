@@ -37,6 +37,9 @@ func main() {
 	mux := http.NewServeMux()
 	fs := http.FileServer(http.Dir(mediaDir))
 
+	fileServer := http.FileServer(http.Dir("assets"))
+	mux.Handle("GET /assets/", http.StripPrefix("/assets", fileServer))
+
 	mux.Handle("/media/", http.StripPrefix("/media/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// w.Header().Set("Content-Type", "audio/mpeg")
 		fs.ServeHTTP(w, r)
