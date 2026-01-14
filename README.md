@@ -1,7 +1,5 @@
 # web-song
 
-## US
-
 <div align="center">
 <img src="https://github.com/LeoScripts/web-song/raw/main/.gitassets/2.jpeg" width="350" />
 
