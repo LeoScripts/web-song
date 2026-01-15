@@ -14,6 +14,17 @@
 Web-Song is an audio player, created to meet some personal needs 😂😂😂😂😂😂 (listening to my music)!! I wanted to listen to the music from my homelab server so I had the idea to create it, the initial idea is quite simple, but I started thinking about other implementations for this project
 let's see where it goes 😂😂😂😂😂
 
+
+```diff
+- attention
+
+! You are fully responsible for your actions, 
+! and I do not assume responsibility for any improper practices 
+! or endorse such behaviors.
+
++ use responsibly
+```
+
 ## with docker
 
 ##### Requirements:
