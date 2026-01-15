@@ -10,8 +10,7 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	"github.com/joho/godotenv"
+	"web-song/assets"
 )
 
 var (
@@ -23,13 +22,16 @@ var (
 
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
+	mediaDir = "/app/media"
 	serverPort = os.Getenv("SERVE_PORT")
-	mediaDir = os.Getenv("MEDIA_DIR")
+	if serverPort == "" {
+		serverPort = "7880"
+	}
 
 	addrFlag := flag.String("addr", ":"+serverPort, "Listen adress")
 	flag.Parse()
@@ -37,8 +39,8 @@ func main() {
 	mux := http.NewServeMux()
 	fs := http.FileServer(http.Dir(mediaDir))
 
-	fileServer := http.FileServer(http.Dir("assets"))
-	mux.Handle("GET /assets/", http.StripPrefix("/assets", fileServer))
+	fileServer := http.FileServer(assets.FS)
+	mux.Handle("GET /assets/", http.StripPrefix("/assets/", fileServer))
 
 	mux.Handle("/media/", http.StripPrefix("/media/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// w.Header().Set("Content-Type", "audio/mpeg")
@@ -57,7 +59,7 @@ func main() {
 	}
 
 	log.Printf("Serving on %s", *addrFlag)
-	err = srv.ListenAndServe()
+	err := srv.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		log.Fatalf("ListenAndServe error: %v", err)
 	}

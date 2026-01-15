@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-//go:embed style.css
+//go:embed *.css
 var assets embed.FS
 
 var FS = http.FS(assets)

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  go-app:
+    build: .
+    image: web-song:latest
+    container_name: web-song
+    ports:
+      - "7880:7878"
+    restart: unless-stopped
+    volumes:
+      - ${MEDIA_DIR}:/app/media
+    environment:
+      - SERVE_PORT=7878
+      - MEDIA_DIR=/home/l/Music
