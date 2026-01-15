@@ -10,6 +10,3 @@ services:
     restart: unless-stopped
     volumes:
       - ${MEDIA_DIR}:/app/media
-    environment:
-      - SERVE_PORT=7878
-      - MEDIA_DIR=/home/your-user/Music

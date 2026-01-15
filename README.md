@@ -27,11 +27,8 @@ let's see where it goes 😂😂😂😂😂
 ```sh
    cd web-song
 ```
-3. change file docker-compose.yml line `MEDIA_DIR` insert your folder.
-> ex:
-```
-- MEDIA_DIR=/home/YOUR_USER/Music  # or MEDIA_DIR=/mnt/media and etc....
-```
+3. Configure environment variables:
+   You will need to create a `.env` file with the same environment variables listed in the `.env.example` file which should be filled with the corresponding environment variables exemplified in the `.env.example` file.
 
 4. runing app
 ```
