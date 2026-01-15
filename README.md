@@ -81,8 +81,7 @@ mediaDir = os.Getenv("MEDIA_DIR")
 - music playback from a predetermined folder
 
 ![](https://github.com/LeoScripts/web-song/raw/main/.gitassets/2.jpeg)
-<!--![](https://github.com/LeoScripts/web-song/raw/main/.gitassets/3.jpeg)
-![](https://github.com/LeoScripts/web-song/raw/main/.gitassets/4.jpeg)-->
+
 
 ##### 💎 Useful Links 💎
 - [Go](https://go.dev/)
