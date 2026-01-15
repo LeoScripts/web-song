@@ -12,4 +12,4 @@ services:
       - ${MEDIA_DIR}:/app/media
     environment:
       - SERVE_PORT=7878
-      - MEDIA_DIR=/home/l/Music
+      - MEDIA_DIR=/home/your-user/Music
