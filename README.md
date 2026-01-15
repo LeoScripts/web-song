@@ -93,3 +93,8 @@ mediaDir = os.Getenv("MEDIA_DIR")
 
 ##### 💎 Useful Links 💎
 - [Go](https://go.dev/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose)
+- [Html](https://html.com/)
+- [Css](https://css3.com/)
+- [Javascript](https://www.javascript.com/)
